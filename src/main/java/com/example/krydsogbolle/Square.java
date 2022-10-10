@@ -7,11 +7,11 @@ public class Square {
         xo = "";
     }
 
-    public String fåString() {
+    public String fåSquare() {
         return xo;
     }
 
-    public void retString(String text) {
+    public void retSquare(String text) {
         xo = text;
     }
 }

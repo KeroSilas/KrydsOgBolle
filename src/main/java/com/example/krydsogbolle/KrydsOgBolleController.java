@@ -2,10 +2,13 @@ package com.example.krydsogbolle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
 public class KrydsOgBolleController {
+
+    private GameBoard game;
 
     @FXML
     private GridPane gridPane;
@@ -45,57 +48,36 @@ public class KrydsOgBolleController {
 
     @FXML
     void trykKnap(ActionEvent event) {
-        System.out.println(event.getSource());
-    }
+        Button knap = (Button) event.getSource(); //Henter hvilken knap der bliver trykket på.
+        int row = (GridPane.getRowIndex(knap) == null) ? 0 : GridPane.getRowIndex(knap); //Laver et row variabel med knappens row index i GridPane containeren.
+        int col = (GridPane.getColumnIndex(knap) == null) ? 0 : GridPane.getColumnIndex(knap); //Laver et column variabel med knappens row index i GridPane containeren.
 
-    @FXML
-    void trykKnap2(ActionEvent event) {
-
-    }
-
-    @FXML
-    void trykKnap3(ActionEvent event) {
-
-    }
-
-    @FXML
-    void trykKnap4(ActionEvent event) {
-
-    }
-
-    @FXML
-    void trykKnap5(ActionEvent event) {
-
-    }
-
-    @FXML
-    void trykKnap6(ActionEvent event) {
-
-    }
-
-    @FXML
-    void trykKnap7(ActionEvent event) {
-
-    }
-
-    @FXML
-    void trykKnap8(ActionEvent event) {
-
-    }
-
-    @FXML
-    void trykKnap9(ActionEvent event) {
-
+        game.spilTur(row, col); //Bruger knappens xy koordinater til at sætte spillerens tur ind i et 2D array af spillebrættet.
+        knap.setText(game.fåSpiller());
+        game.næsteSpiller(); //Skifter til den anden spiller (sætter næste tur til O fra X eller omvendt).
     }
 
     @FXML
     void trykNytSpil(ActionEvent event) {
-
+        try {
+            game.nytSpil();
+            for (Node n : gridPane.getChildren()) { //Kigger alle noder igennem der ligger i GridPane og sletter deres text.
+                Button knap = (Button) n;
+                knap.setText("");
+            }
+        }
+        catch (ClassCastException e) { //ClassCastException ved runtime, der bliver fundet en "Group" node i loopen?
+            System.out.println(e);
+        }
     }
 
     @FXML
     void trykOpgiv(ActionEvent event) {
 
+    }
+
+    public void initialize() {
+        game = new GameBoard();
     }
 
 }

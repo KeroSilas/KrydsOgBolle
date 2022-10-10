@@ -3,15 +3,18 @@ package com.example.krydsogbolle;
 public class Game {
 
     private String spiller;
-    Board bræt;
-    String vinder;
+    private Board board;
+    private int spilTurTæller;
 
     //Sætter X eller O ind, alt efter hvem der er den næste spiller. Placeringen af spillerens input bliver sendt fra controlleren.
     public void spilTur(int row, int col) {
 
-        bræt.fåBoard()[row][col].retSquare(spiller);
+        board.fåFelter()[row][col].retSquare(spiller);
+        spilTurTæller++;
+
         System.out.println(row + " / " + col);
         System.out.println(spiller);
+        System.out.println(spilTurTæller);
 
     }
 
@@ -27,24 +30,16 @@ public class Game {
             spiller = "O";
             return;
         }
+
         spiller = "X";
 
         //spiller = (spiller.equals("X")) ? "O" : "X";
 
     }
 
-    public String visVinder() {
+    public String fåVinder() {
 
-        vinder = bræt.fåBoard()[0][0].fåSquare() + bræt.fåBoard()[0][1].fåSquare() + bræt.fåBoard()[0][2].fåSquare();
-
-        if (vinder.equals("XXX")) {
-            return "X";
-        }
-        else if (vinder.equals("OOO")) {
-            return "O";
-        }
-
-        vinder = bræt.fåBoard()[1][0].fåSquare() + bræt.fåBoard()[1][1].fåSquare() + bræt.fåBoard()[1][2].fåSquare();
+        String vinder = board.fåFelter()[0][0].fåSquare() + board.fåFelter()[0][1].fåSquare() + board.fåFelter()[0][2].fåSquare();
 
         if (vinder.equals("XXX")) {
             return "X";
@@ -53,7 +48,7 @@ public class Game {
             return "O";
         }
 
-        vinder = bræt.fåBoard()[2][0].fåSquare() + bræt.fåBoard()[2][1].fåSquare() + bræt.fåBoard()[2][2].fåSquare();
+        vinder = board.fåFelter()[1][0].fåSquare() + board.fåFelter()[1][1].fåSquare() + board.fåFelter()[1][2].fåSquare();
 
         if (vinder.equals("XXX")) {
             return "X";
@@ -62,7 +57,7 @@ public class Game {
             return "O";
         }
 
-        vinder = bræt.fåBoard()[0][0].fåSquare() + bræt.fåBoard()[0][1].fåSquare() + bræt.fåBoard()[0][2].fåSquare();
+        vinder = board.fåFelter()[2][0].fåSquare() + board.fåFelter()[2][1].fåSquare() + board.fåFelter()[2][2].fåSquare();
 
         if (vinder.equals("XXX")) {
             return "X";
@@ -71,7 +66,7 @@ public class Game {
             return "O";
         }
 
-        vinder = bræt.fåBoard()[1][0].fåSquare() + bræt.fåBoard()[1][1].fåSquare() + bræt.fåBoard()[1][2].fåSquare();
+        vinder = board.fåFelter()[0][0].fåSquare() + board.fåFelter()[0][1].fåSquare() + board.fåFelter()[0][2].fåSquare();
 
         if (vinder.equals("XXX")) {
             return "X";
@@ -80,7 +75,7 @@ public class Game {
             return "O";
         }
 
-        vinder = bræt.fåBoard()[2][0].fåSquare() + bræt.fåBoard()[2][1].fåSquare() + bræt.fåBoard()[2][2].fåSquare();
+        vinder = board.fåFelter()[1][0].fåSquare() + board.fåFelter()[1][1].fåSquare() + board.fåFelter()[1][2].fåSquare();
 
         if (vinder.equals("XXX")) {
             return "X";
@@ -89,7 +84,7 @@ public class Game {
             return "O";
         }
 
-        vinder = bræt.fåBoard()[0][0].fåSquare() + bræt.fåBoard()[1][1].fåSquare() + bræt.fåBoard()[2][2].fåSquare();
+        vinder = board.fåFelter()[2][0].fåSquare() + board.fåFelter()[2][1].fåSquare() + board.fåFelter()[2][2].fåSquare();
 
         if (vinder.equals("XXX")) {
             return "X";
@@ -98,7 +93,16 @@ public class Game {
             return "O";
         }
 
-        vinder = bræt.fåBoard()[2][2].fåSquare() + bræt.fåBoard()[1][1].fåSquare() + bræt.fåBoard()[0][0].fåSquare();
+        vinder = board.fåFelter()[0][0].fåSquare() + board.fåFelter()[1][1].fåSquare() + board.fåFelter()[2][2].fåSquare();
+
+        if (vinder.equals("XXX")) {
+            return "X";
+        }
+        else if (vinder.equals("OOO")) {
+            return "O";
+        }
+
+        vinder = board.fåFelter()[2][2].fåSquare() + board.fåFelter()[1][1].fåSquare() + board.fåFelter()[0][0].fåSquare();
 
         if (vinder.equals("XXX")) {
             return "X";
@@ -113,7 +117,7 @@ public class Game {
 
     public boolean slutSpil() {
 
-        if (!visVinder().equals("")) {
+        if (!fåVinder().equals("")) {
             return true;
         }
 
@@ -124,8 +128,9 @@ public class Game {
     //Starter et nyt spil og nulstiller næste spillers tur til at være X.
     public void nytSpil() {
 
-        bræt = new Board();
+        board = new Board();
         spiller = "X";
+        spilTurTæller = 0;
 
     }
 
@@ -145,4 +150,13 @@ public class Game {
         this.spiller = spiller;
 
     }
+
+    public Board fåBoard() {
+        return board;
+    }
+
+    public int fåSpilTurTæller() {
+        return spilTurTæller;
+    }
+
 }

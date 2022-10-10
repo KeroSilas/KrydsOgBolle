@@ -17,7 +17,7 @@ public class Board {
 
     }
 
-    public Square[][] fåBoard() {
+    public Square[][] fåFelter() {
 
         return board;
 

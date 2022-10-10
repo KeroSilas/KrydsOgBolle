@@ -59,20 +59,18 @@ public class KrydsOgBolleController {
         int row = (GridPane.getRowIndex(knap) == null) ? 0 : GridPane.getRowIndex(knap); //Laver et row variabel med knappens row index i GridPane containeren.
         int col = (GridPane.getColumnIndex(knap) == null) ? 0 : GridPane.getColumnIndex(knap); //Laver et column variabel med knappens row index i GridPane containeren.
 
-        if (game.bræt.fåBoard()[row][col].fåSquare().isBlank()) { //Checker om feltet spilleren har valgt er blankt.
+        //Checker om feltet spilleren har valgt er blank og om der er blevet placeret mindre end 6 brikker.
+        if (game.fåBoard().fåFelter()[row][col].fåSquare().isBlank() && game.fåSpilTurTæller()<6) {
             game.spilTur(row, col); //Bruger knappens xy koordinater til at sætte spillerens tur ind i et 2D array af spillebrættet.
             knap.setText(game.fåSpiller());
             game.næsteSpiller(); //Skifter til den anden spiller (sætter næste tur til O fra X eller omvendt).
         }
+        //Hvis 6 brikker er placeret på spillebrættet, så bruges metoden flytBrik() i stedet.
+        else {
+            game.flytBrik(row, col);
+        }
 
     }
-
-    /*@FXML
-    void flytKnap(MouseDragEvent event) {
-        Button knap = (Button) event.getSource(); //Henter hvilken knap der bliver trykket på.
-        int row = (GridPane.getRowIndex(knap) == null) ? 0 : GridPane.getRowIndex(knap); //Laver et row variabel med knappens row index i GridPane containeren.
-        int col = (GridPane.getColumnIndex(knap) == null) ? 0 : GridPane.getColumnIndex(knap); //Laver et column variabel med knappens row index i GridPane containeren.
-    }*/
 
     @FXML
     void trykNytSpil(ActionEvent event) {

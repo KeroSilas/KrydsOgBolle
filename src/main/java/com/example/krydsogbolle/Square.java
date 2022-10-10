@@ -11,7 +11,7 @@ public class Square {
         return xo;
     }
 
-    public void retSquare(String text) {
-        xo = text;
+    public void retSquare(String xo) {
+        this.xo = xo;
     }
 }

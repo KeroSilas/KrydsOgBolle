@@ -4,11 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.layout.GridPane;
 
 public class KrydsOgBolleController {
 
-    private GameBoard game;
+    private Game game;
 
     @FXML
     private GridPane gridPane;
@@ -59,6 +60,13 @@ public class KrydsOgBolleController {
         game.næsteSpiller(); //Skifter til den anden spiller (sætter næste tur til O fra X eller omvendt).
     }
 
+    /*@FXML
+    void flytKnap(MouseDragEvent event) {
+        Button knap = (Button) event.getSource(); //Henter hvilken knap der bliver trykket på.
+        int row = (GridPane.getRowIndex(knap) == null) ? 0 : GridPane.getRowIndex(knap); //Laver et row variabel med knappens row index i GridPane containeren.
+        int col = (GridPane.getColumnIndex(knap) == null) ? 0 : GridPane.getColumnIndex(knap); //Laver et column variabel med knappens row index i GridPane containeren.
+    }*/
+
     @FXML
     void trykNytSpil(ActionEvent event) {
         try {
@@ -79,7 +87,9 @@ public class KrydsOgBolleController {
     }
 
     public void initialize() {
-        game = new GameBoard();
+        game = new Game();
+        game.bræt = new Board();
+        game.retSpiller("X");
     }
 
 }

@@ -14,7 +14,7 @@ public class Game {
 
     }
 
-    //Flytter brikken 
+    //Flytter brikken ...
     public void flytBrik(int row, int col) {
 
     }

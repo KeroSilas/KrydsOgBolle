@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseDragEvent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 public class KrydsOgBolleController {
@@ -13,6 +13,9 @@ public class KrydsOgBolleController {
 
     @FXML
     private GridPane gridPane;
+
+    @FXML
+    private Label test;
 
     //De her knapper behøver vi nok ikke at definere.
     @FXML
@@ -93,8 +96,7 @@ public class KrydsOgBolleController {
     public void initialize() {
 
         game = new Game();
-        game.bræt = new Board();
-        game.retSpiller("X");
+        game.nytSpil();
 
     }
 

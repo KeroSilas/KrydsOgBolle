@@ -99,7 +99,7 @@
       </GridPane>
    </center>
    <top>
-      <Label prefHeight="50.0" text="KRYDS OG BOLLE" BorderPane.alignment="CENTER">
+      <Label fx:id="test" prefHeight="50.0" text="KRYDS OG BOLLE" BorderPane.alignment="CENTER">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>

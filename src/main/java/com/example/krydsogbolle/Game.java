@@ -4,6 +4,7 @@ public class Game {
 
     private String spiller;
     Board bræt;
+    String vinder;
 
     //Sætter X eller O ind, alt efter hvem der er den næste spiller. Placeringen af spillerens input bliver sendt fra controlleren.
     public void spilTur(int row, int col) {
@@ -29,6 +30,94 @@ public class Game {
         spiller = "X";
 
         //spiller = (spiller.equals("X")) ? "O" : "X";
+
+    }
+
+    public String visVinder() {
+
+        vinder = bræt.fåBoard()[0][0].fåSquare() + bræt.fåBoard()[0][1].fåSquare() + bræt.fåBoard()[0][2].fåSquare();
+
+        if (vinder.equals("XXX")) {
+            return "X";
+        }
+        else if (vinder.equals("OOO")) {
+            return "O";
+        }
+
+        vinder = bræt.fåBoard()[1][0].fåSquare() + bræt.fåBoard()[1][1].fåSquare() + bræt.fåBoard()[1][2].fåSquare();
+
+        if (vinder.equals("XXX")) {
+            return "X";
+        }
+        else if (vinder.equals("OOO")) {
+            return "O";
+        }
+
+        vinder = bræt.fåBoard()[2][0].fåSquare() + bræt.fåBoard()[2][1].fåSquare() + bræt.fåBoard()[2][2].fåSquare();
+
+        if (vinder.equals("XXX")) {
+            return "X";
+        }
+        else if (vinder.equals("OOO")) {
+            return "O";
+        }
+
+        vinder = bræt.fåBoard()[0][0].fåSquare() + bræt.fåBoard()[0][1].fåSquare() + bræt.fåBoard()[0][2].fåSquare();
+
+        if (vinder.equals("XXX")) {
+            return "X";
+        }
+        else if (vinder.equals("OOO")) {
+            return "O";
+        }
+
+        vinder = bræt.fåBoard()[1][0].fåSquare() + bræt.fåBoard()[1][1].fåSquare() + bræt.fåBoard()[1][2].fåSquare();
+
+        if (vinder.equals("XXX")) {
+            return "X";
+        }
+        else if (vinder.equals("OOO")) {
+            return "O";
+        }
+
+        vinder = bræt.fåBoard()[2][0].fåSquare() + bræt.fåBoard()[2][1].fåSquare() + bræt.fåBoard()[2][2].fåSquare();
+
+        if (vinder.equals("XXX")) {
+            return "X";
+        }
+        else if (vinder.equals("OOO")) {
+            return "O";
+        }
+
+        vinder = bræt.fåBoard()[0][0].fåSquare() + bræt.fåBoard()[1][1].fåSquare() + bræt.fåBoard()[2][2].fåSquare();
+
+        if (vinder.equals("XXX")) {
+            return "X";
+        }
+        else if (vinder.equals("OOO")) {
+            return "O";
+        }
+
+        vinder = bræt.fåBoard()[2][2].fåSquare() + bræt.fåBoard()[1][1].fåSquare() + bræt.fåBoard()[0][0].fåSquare();
+
+        if (vinder.equals("XXX")) {
+            return "X";
+        }
+        else if (vinder.equals("OOO")) {
+            return "O";
+        }
+
+        return "";
+
+    }
+
+    public boolean slutSpil() {
+
+        if (!visVinder().equals("")) {
+            return true;
+        }
+
+        return false;
 
     }
 

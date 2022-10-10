@@ -13,6 +13,7 @@ public class KrydsOgBolleController {
     @FXML
     private GridPane gridPane;
 
+    //De her knapper behøver vi nok ikke at definere.
     @FXML
     private Button knap1;
 
@@ -39,6 +40,7 @@ public class KrydsOgBolleController {
 
     @FXML
     private Button knap9;
+    // -
 
     @FXML
     private Button nytSpil;

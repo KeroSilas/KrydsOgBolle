@@ -59,9 +59,11 @@ public class KrydsOgBolleController {
         int row = (GridPane.getRowIndex(knap) == null) ? 0 : GridPane.getRowIndex(knap); //Laver et row variabel med knappens row index i GridPane containeren.
         int col = (GridPane.getColumnIndex(knap) == null) ? 0 : GridPane.getColumnIndex(knap); //Laver et column variabel med knappens row index i GridPane containeren.
 
-        game.spilTur(row, col); //Bruger knappens xy koordinater til at sætte spillerens tur ind i et 2D array af spillebrættet.
-        knap.setText(game.fåSpiller());
-        game.næsteSpiller(); //Skifter til den anden spiller (sætter næste tur til O fra X eller omvendt).
+        if (game.bræt.fåBoard()[row][col].fåSquare().isBlank()) { //Checker om feltet spilleren har valgt er blankt.
+            game.spilTur(row, col); //Bruger knappens xy koordinater til at sætte spillerens tur ind i et 2D array af spillebrættet.
+            knap.setText(game.fåSpiller());
+            game.næsteSpiller(); //Skifter til den anden spiller (sætter næste tur til O fra X eller omvendt).
+        }
 
     }
 

@@ -51,6 +51,7 @@ public class KrydsOgBolleController {
 
     @FXML
     void trykKnap(ActionEvent event) {
+
         Button knap = (Button) event.getSource(); //Henter hvilken knap der bliver trykket på.
         int row = (GridPane.getRowIndex(knap) == null) ? 0 : GridPane.getRowIndex(knap); //Laver et row variabel med knappens row index i GridPane containeren.
         int col = (GridPane.getColumnIndex(knap) == null) ? 0 : GridPane.getColumnIndex(knap); //Laver et column variabel med knappens row index i GridPane containeren.
@@ -58,6 +59,7 @@ public class KrydsOgBolleController {
         game.spilTur(row, col); //Bruger knappens xy koordinater til at sætte spillerens tur ind i et 2D array af spillebrættet.
         knap.setText(game.fåSpiller());
         game.næsteSpiller(); //Skifter til den anden spiller (sætter næste tur til O fra X eller omvendt).
+
     }
 
     /*@FXML
@@ -69,6 +71,7 @@ public class KrydsOgBolleController {
 
     @FXML
     void trykNytSpil(ActionEvent event) {
+
         try {
             game.nytSpil();
             for (Node n : gridPane.getChildren()) { //Kigger alle noder igennem der ligger i GridPane og sletter deres text.
@@ -79,6 +82,7 @@ public class KrydsOgBolleController {
         catch (ClassCastException e) { //ClassCastException ved runtime, der bliver fundet en "Group" node i loopen?
             System.out.println(e);
         }
+
     }
 
     @FXML
@@ -87,9 +91,11 @@ public class KrydsOgBolleController {
     }
 
     public void initialize() {
+
         game = new Game();
         game.bræt = new Board();
         game.retSpiller("X");
+
     }
 
 }

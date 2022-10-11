@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,6 +32,9 @@ public class KrydsOgBolleController {
     @FXML
     private GridPane gridPane;
 
+    @FXML
+    private Label infoBox;
+
     //Styrer hvor spilleren placerer sin brik og placerer den.
     @FXML
     void trykKnap(ActionEvent event) throws IOException {
@@ -51,8 +55,11 @@ public class KrydsOgBolleController {
         }
 
         //Hvis en spiller har vundet, vis vinder skærmen.
-        if (game.slutSpil()) {
-            visVinderSkærm(event);
+        if (game.fåVinder().equals("X")) {
+            visVinderXSkærm(event);
+        }
+        else if (game.fåVinder().equals("O")) {
+            visVinderOSkærm(event);
         }
 
     }
@@ -114,9 +121,18 @@ public class KrydsOgBolleController {
 
     }
 
-    public void visVinderSkærm(ActionEvent event) throws IOException {
+    public void visVinderXSkærm(ActionEvent event) throws IOException {
 
-        root = FXMLLoader.load(getClass().getResource("KrydsOgBolleVinder.fxml"));
+        root = FXMLLoader.load(getClass().getResource("KrydsOgBolleVinderX.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void visVinderOSkærm(ActionEvent event) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource("KrydsOgBolleVinderO.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

@@ -16,7 +16,7 @@
       </ImageView>
    </center>
    <top>
-      <Label fx:id="infoBox" text="Temp" textAlignment="CENTER" BorderPane.alignment="BOTTOM_CENTER">
+      <Label fx:id="infoBox" text="Spiller X vandt!" textAlignment="CENTER" BorderPane.alignment="BOTTOM_CENTER">
          <font>
             <Font name="Arial Black" size="22.0" />
          </font>

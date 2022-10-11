@@ -9,7 +9,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="nytSpil" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#trykNytSpil" text="Nyt Spil" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+            <Button fx:id="opgiv" maxWidth="100.0" mnemonicParsing="false" onAction="#trykOpgiv" text="Opgiv" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
@@ -17,16 +17,8 @@
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </padding>
                <font>
-                  <Font name="Arial" size="12.0" />
+                  <Font name="Arial Black" size="12.0" />
                </font>
-            </Button>
-            <Button fx:id="opgiv" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#trykOpgiv" text="Opgiv" textAlignment="CENTER" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin>
-               <padding>
-                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-               </padding>
             </Button>
          </children>
       </HBox>

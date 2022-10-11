@@ -25,14 +25,7 @@ public class Game {
     //Vurderer hvem der skal spille næste tur.
     public void næsteSpiller() {
 
-        if(spiller.equals("X")) {
-            spiller = "O";
-            return;
-        }
-
-        spiller = "X";
-
-        //spiller = (spiller.equals("X")) ? "O" : "X";
+        spiller = (spiller.equals("X")) ? "O" : "X";
 
     }
 
@@ -153,11 +146,15 @@ public class Game {
     }
 
     public Board fåBoard() {
+
         return board;
+
     }
 
     public int fåSpilTurTæller() {
+
         return spilTurTæller;
+
     }
 
 }

@@ -87,7 +87,7 @@ public class KrydsOgBolleController {
                 knap.setText("");
             }
         }
-        catch (NullPointerException e) { //
+        catch (NullPointerException e) {
             System.out.println(e);
         }
 

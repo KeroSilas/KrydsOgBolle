@@ -58,7 +58,6 @@ public class KrydsOgBolleController {
 
         visSpilSkærm(event);
         game.nytSpil();
-        resetKnapper();
 
     }
 
@@ -66,7 +65,6 @@ public class KrydsOgBolleController {
     void trykOpgiv(ActionEvent event) throws IOException {
 
         visOpgivSkærm(event);
-        game.nytSpil();
 
     }
 

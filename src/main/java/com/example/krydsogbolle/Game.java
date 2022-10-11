@@ -4,7 +4,7 @@ public class Game {
 
     private String spiller;
     private Board board;
-    private int spilTurTæller;
+    private int spilTurTæller; //Tæller antal ture der er blevet spillet i alt.
 
     //Sætter X eller O ind, alt efter hvem der er den næste spiller. Placeringen af spillerens input bliver sendt fra controlleren.
     public void spilTur(int row, int col) {
@@ -135,6 +135,7 @@ public class Game {
 
     }
 
+    //Bliver ikke brugt lige nu. Kan bruges til en funktion hvor spilleren vælger om X eller O starter.
     public void retSpiller(String spiller) {
 
         this.spiller = spiller;

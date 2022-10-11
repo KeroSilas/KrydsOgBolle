@@ -11,17 +11,12 @@ public class KrydsOgBolleApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        //Forsøger at starter programmet med gameMenu.fxml
-        try {
-            Parent root = FXMLLoader.load(KrydsOgBolleApplication.class.getResource("KrydsOgBolleFront.fxml"));
-            Scene scene = new Scene(root);
-            stage.setTitle("Kryds og Bolle");
-            stage.setScene(scene);
-            stage.show();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        Parent root = FXMLLoader.load(KrydsOgBolleApplication.class.getResource("KrydsOgBolleFront.fxml"));
+        Scene scene = new Scene(root);
+        stage.setTitle("Kryds og Bolle");
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     public static void main(String[] args) {

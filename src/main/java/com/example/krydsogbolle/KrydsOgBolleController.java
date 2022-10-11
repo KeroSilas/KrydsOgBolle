@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,19 +29,11 @@ public class KrydsOgBolleController {
     private Game game;
 
     @FXML
-    private Label infoBox;
-
-    @FXML
-    private ImageView billedeBox;
-
-    @FXML
     private GridPane gridPane;
 
+    //Styrer hvor spilleren placerer sin brik og placerer den.
     @FXML
-    private Label test;
-
-    @FXML
-    void trykKnap(ActionEvent event) {
+    void trykKnap(ActionEvent event) throws IOException {
 
         Button knap = (Button) event.getSource(); //Henter hvilken knap der bliver trykket på.
         int row = (GridPane.getRowIndex(knap) == null) ? 0 : GridPane.getRowIndex(knap); //Laver et row variabel med knappens row index i GridPane containeren.
@@ -61,17 +50,17 @@ public class KrydsOgBolleController {
             game.flytBrik(row, col);
         }
 
+        //Hvis en spiller har vundet, vis vinder skærmen.
+        if (game.slutSpil()) {
+            visVinderSkærm(event);
+        }
+
     }
 
     @FXML
     void trykNytSpil(ActionEvent event) throws IOException {
 
-        root = FXMLLoader.load(getClass().getResource("KrydsOgBolle.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+        visSpilSkærm(event);
         game.nytSpil();
         resetKnapper();
 
@@ -79,11 +68,8 @@ public class KrydsOgBolleController {
 
     @FXML
     void trykOpgiv(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("KrydsOgBolleOpgiv.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        
+
+        visOpgivSkærm(event);
         stage.show();
         game.nytSpil();
 
@@ -104,9 +90,36 @@ public class KrydsOgBolleController {
                 knap.setText("");
             }
         }
-        catch (ClassCastException e) {
+        catch (NullPointerException e) {
             System.out.println(e);
         }
+
+    }
+
+    public void visSpilSkærm(ActionEvent event) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource("KrydsOgBolle.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void visOpgivSkærm(ActionEvent event) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource("KrydsOgBolleOpgiv.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void visVinderSkærm(ActionEvent event) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource("KrydsOgBolleVinder.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
 
     }
 

@@ -1,12 +1,10 @@
 package com.example.krydsogbolle;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 //import javafx.scene.media.*;
@@ -38,12 +35,7 @@ public class KrydsOgBolleController {
     private Label infoBox;
 
     @FXML
-    private ListView<Image> imageListView;
-
-    @FXML
     private ImageView billedeBox;
-
-    private final ListView<Image> ObservableList<Image> images = FXCollections.observableArrayList();
 
     @FXML
     private GridPane gridPane;
@@ -72,57 +64,49 @@ public class KrydsOgBolleController {
     }
 
     @FXML
-    void trykNytSpil(ActionEvent event) {
+    void trykNytSpil(ActionEvent event) throws IOException {
 
-        try {
-            root = FXMLLoader.load(getClass().getResource("KrydsOgBolle.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            game.nytSpil();
-            for (Node n : gridPane.getChildren()) { //Kigger alle noder igennem der ligger i GridPane og sletter deres text.
-                Button knap = (Button) n;
-                knap.setText("");
-            }
-        }
-        catch (ClassCastException | IOException e) { //ClassCastException ved runtime, der bliver fundet en "Group" node i loopen?
-            System.out.println(e);
-        }
-
-    }
-
-    @FXML
-    void trykOpgiv(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("KrydsOgBolleFront.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        game.opgiv();
-
-        Image image = new Image(getClass().getResourceAsStream("/images/Loser.png"));
-        System.out.println(getClass().getResourceAsStream("/images/Loser.png"));
-        billedeBox.setImage(image);
-
-    }
-
-    public void initialize() {
-
-        billedeBox = new ImageView("file:Forside.png");
-        game = new Game();
-        game.nytSpil();
-
-    }
-
-    //Skifter scene fra KrydsOgBolleFront.fxml til KrydsOgBolle.fxml
-    @FXML
-    public void skiftScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("KrydsOgBolle.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+        game.nytSpil();
+        resetKnapper();
+
+    }
+
+    @FXML
+    void trykOpgiv(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("KrydsOgBolleOpgiv.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        
+        stage.show();
+        game.nytSpil();
+
+    }
+
+    public void initialize() {
+
+        game = new Game();
+        game.nytSpil();
+
+    }
+
+    public void resetKnapper() {
+
+        try {
+            for (Node n : gridPane.getChildren()) { //Kigger alle noder igennem der ligger i GridPane og sletter deres text.
+                Button knap = (Button) n;
+                knap.setText("");
+            }
+        }
+        catch (ClassCastException e) {
+            System.out.println(e);
+        }
 
     }
 

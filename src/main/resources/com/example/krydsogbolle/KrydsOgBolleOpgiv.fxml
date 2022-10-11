@@ -12,11 +12,11 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.krydsogbolle.KrydsOgBolleController">
    <center>
       <ImageView fx:id="billedeBox" fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <Image url="@../../../images/Forside.jpeg" />
+         <Image url="@../../../images/Loser.png" />
       </ImageView>
    </center>
    <top>
-      <Label fx:id="infoBox" text="KRYDS OG BOLLE" textAlignment="CENTER" BorderPane.alignment="BOTTOM_CENTER">
+      <Label fx:id="infoBox" text="Du gav op.." textAlignment="CENTER" BorderPane.alignment="BOTTOM_CENTER">
          <font>
             <Font name="Arial Black" size="22.0" />
          </font>

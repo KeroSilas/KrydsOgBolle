@@ -59,7 +59,7 @@ public class Game {
             return "O";
         }
 
-        vinder = board.fåFelter()[0][0].fåSquare() + board.fåFelter()[0][1].fåSquare() + board.fåFelter()[0][2].fåSquare();
+        vinder = board.fåFelter()[0][0].fåSquare() + board.fåFelter()[1][0].fåSquare() + board.fåFelter()[2][0].fåSquare();
 
         if (vinder.equals("XXX")) {
             return "X";
@@ -68,7 +68,7 @@ public class Game {
             return "O";
         }
 
-        vinder = board.fåFelter()[1][0].fåSquare() + board.fåFelter()[1][1].fåSquare() + board.fåFelter()[1][2].fåSquare();
+        vinder = board.fåFelter()[0][1].fåSquare() + board.fåFelter()[1][1].fåSquare() + board.fåFelter()[2][1].fåSquare();
 
         if (vinder.equals("XXX")) {
             return "X";
@@ -77,7 +77,7 @@ public class Game {
             return "O";
         }
 
-        vinder = board.fåFelter()[2][0].fåSquare() + board.fåFelter()[2][1].fåSquare() + board.fåFelter()[2][2].fåSquare();
+        vinder = board.fåFelter()[0][2].fåSquare() + board.fåFelter()[1][2].fåSquare() + board.fåFelter()[2][2].fåSquare();
 
         if (vinder.equals("XXX")) {
             return "X";
@@ -95,7 +95,7 @@ public class Game {
             return "O";
         }
 
-        vinder = board.fåFelter()[2][2].fåSquare() + board.fåFelter()[1][1].fåSquare() + board.fåFelter()[0][0].fåSquare();
+        vinder = board.fåFelter()[0][2].fåSquare() + board.fåFelter()[1][1].fåSquare() + board.fåFelter()[2][0].fåSquare();
 
         if (vinder.equals("XXX")) {
             return "X";
@@ -125,10 +125,6 @@ public class Game {
         board = new Board();
         spiller = "X";
         spilTurTæller = 0;
-
-    }
-
-    public void opgiv() {
 
     }
 

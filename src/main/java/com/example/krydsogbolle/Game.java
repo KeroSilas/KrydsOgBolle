@@ -36,6 +36,7 @@ public class Game {
 
     }
 
+    //Sammenligner de felter hvor en vinder kan blive fundet, og vurderer hvem der har vundet.
     public String fåVinder() {
 
         String vinder = board.fåFelter()[0][0].fåSquare() + board.fåFelter()[0][1].fåSquare() + board.fåFelter()[0][2].fåSquare();
@@ -114,6 +115,7 @@ public class Game {
 
     }
 
+    //Giver true hvis en vinder er fundet.
     public boolean slutSpil() {
 
         if (!fåVinder().equals("")) {

@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.File;
 import java.io.IOException;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.Media;
@@ -110,8 +109,7 @@ public class KrydsOgBolleController {
         scene = new Scene(root);
         stage.setScene(scene);
 
-        String musicFile = "C:\\Users\\aerom\\Documents\\GitHub\\KrydsOgBolle\\src\\main\\resources\\sounds\\TaberLyd.mp3";
-        Media lyd = new Media(new File(musicFile).toURI().toString());
+        Media lyd = new Media(String.valueOf(getClass().getResource("/sounds/TaberLyd.mp3")));
         MediaPlayer mediaPlayer = new MediaPlayer(lyd);
         mediaPlayer.seek(mediaPlayer.getStartTime());
         mediaPlayer.play();
@@ -126,8 +124,7 @@ public class KrydsOgBolleController {
         scene = new Scene(root);
         stage.setScene(scene);
 
-        String musicFile = "C:\\Users\\aerom\\Documents\\GitHub\\KrydsOgBolle\\src\\main\\resources\\sounds\\VinderLyd.mp3";
-        Media lyd = new Media(new File(musicFile).toURI().toString());
+        Media lyd = new Media(String.valueOf(getClass().getResource("/sounds/VinderLyd.mp3")));
         MediaPlayer mediaPlayer = new MediaPlayer(lyd);
         mediaPlayer.seek(mediaPlayer.getStartTime());
         mediaPlayer.play();
@@ -142,8 +139,7 @@ public class KrydsOgBolleController {
         scene = new Scene(root);
         stage.setScene(scene);
 
-        String musicFile = "C:\\Users\\aerom\\Documents\\GitHub\\KrydsOgBolle\\src\\main\\resources\\sounds\\VinderLyd.mp3";
-        Media lyd = new Media(new File(musicFile).toURI().toString());
+        Media lyd = new Media(String.valueOf(getClass().getResource("/sounds/VinderLyd.mp3")));
         MediaPlayer mediaPlayer = new MediaPlayer(lyd);
         mediaPlayer.seek(mediaPlayer.getStartTime());
         mediaPlayer.play();

@@ -35,7 +35,7 @@ public class KrydsOgBolleController {
     @FXML
     private Label infoBox;
 
-    //Styrer hvor spilleren placerer sin brik og placerer den.
+    //Styrer hvor spilleren placerer sin brik og placerer den, og holder øje med hvem der vinder.
     @FXML
     void trykKnap(ActionEvent event) throws IOException {
 
@@ -77,7 +77,6 @@ public class KrydsOgBolleController {
     void trykOpgiv(ActionEvent event) throws IOException {
 
         visOpgivSkærm(event);
-        stage.show();
         game.nytSpil();
 
     }

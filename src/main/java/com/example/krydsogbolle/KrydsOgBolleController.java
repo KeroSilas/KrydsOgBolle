@@ -75,7 +75,10 @@ public class KrydsOgBolleController {
 
     }
 
-    //Fjerner alt tekst fra spilleknapperne.
+    /*
+    Fjerner alt tekst fra spilleknapperne.
+    Er i øjeblikket ikke nødvendigt, da når en ny spil skærm bliver loadet, så bliver der dannet nye knapper.
+    */
     public void resetKnapper() {
 
         try {

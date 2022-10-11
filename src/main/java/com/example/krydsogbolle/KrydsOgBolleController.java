@@ -43,7 +43,7 @@ public class KrydsOgBolleController {
             game.flytBrik(row, col);
         }
 
-        //Hvis en spiller har vundet, vis vinder skærmen.
+        //Hvis en spiller har vundet, så vis en vinder skærm.
         if (game.fåVinder().equals("X")) {
             visVinderXSkærm(event);
         }
@@ -77,6 +77,7 @@ public class KrydsOgBolleController {
 
     }
 
+    //Fjerner alt tekst fra spilleknapperne.
     public void resetKnapper() {
 
         try {
@@ -109,6 +110,7 @@ public class KrydsOgBolleController {
         scene = new Scene(root);
         stage.setScene(scene);
 
+        //Spiller en lyd.
         Media lyd = new Media(String.valueOf(getClass().getResource("/sounds/TaberLyd.mp3")));
         MediaPlayer mediaPlayer = new MediaPlayer(lyd);
         mediaPlayer.seek(mediaPlayer.getStartTime());
@@ -124,6 +126,7 @@ public class KrydsOgBolleController {
         scene = new Scene(root);
         stage.setScene(scene);
 
+        //Spiller en lyd.
         Media lyd = new Media(String.valueOf(getClass().getResource("/sounds/VinderLyd.mp3")));
         MediaPlayer mediaPlayer = new MediaPlayer(lyd);
         mediaPlayer.seek(mediaPlayer.getStartTime());
@@ -139,6 +142,7 @@ public class KrydsOgBolleController {
         scene = new Scene(root);
         stage.setScene(scene);
 
+        //Spiller en lyd.
         Media lyd = new Media(String.valueOf(getClass().getResource("/sounds/VinderLyd.mp3")));
         MediaPlayer mediaPlayer = new MediaPlayer(lyd);
         mediaPlayer.seek(mediaPlayer.getStartTime());

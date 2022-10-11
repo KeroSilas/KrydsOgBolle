@@ -141,6 +141,7 @@ public class Game {
 
     }
 
+    //Henter spillebrættet.
     public Board fåBoard() {
 
         return board;

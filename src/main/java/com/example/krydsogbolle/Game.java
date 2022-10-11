@@ -14,7 +14,6 @@ public class Game {
 
         System.out.println(row + " / " + col);
         System.out.println(spiller);
-        System.out.println(spilTurTæller);
 
     }
 

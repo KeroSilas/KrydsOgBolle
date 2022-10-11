@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,16 +11,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
-//import javafx.scene.media.*;
-//import java.io.File;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.Media;
 
 public class KrydsOgBolleController {
-
-    /*String musicFile = "";
-
-    Media sound = new Media(new File(musicFile).toURI().toString());
-    MediaPlayer mediaPlayer = new MediaPlayer(sound);
-    mediaPlayer.play();*/
 
     private Stage stage;
     private Scene scene;
@@ -117,6 +110,12 @@ public class KrydsOgBolleController {
         scene = new Scene(root);
         stage.setScene(scene);
 
+        String musicFile = "C:\\Users\\aerom\\Documents\\GitHub\\KrydsOgBolle\\src\\main\\resources\\sounds\\TaberLyd.mp3";
+        Media lyd = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(lyd);
+        mediaPlayer.seek(mediaPlayer.getStartTime());
+        mediaPlayer.play();
+
     }
 
     //Laver skærmen for når spiller X vinder.
@@ -127,6 +126,12 @@ public class KrydsOgBolleController {
         scene = new Scene(root);
         stage.setScene(scene);
 
+        String musicFile = "C:\\Users\\aerom\\Documents\\GitHub\\KrydsOgBolle\\src\\main\\resources\\sounds\\VinderLyd.mp3";
+        Media lyd = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(lyd);
+        mediaPlayer.seek(mediaPlayer.getStartTime());
+        mediaPlayer.play();
+
     }
 
     //Laver skærmen for når spiller O vinder.
@@ -136,6 +141,12 @@ public class KrydsOgBolleController {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+
+        String musicFile = "C:\\Users\\aerom\\Documents\\GitHub\\KrydsOgBolle\\src\\main\\resources\\sounds\\VinderLyd.mp3";
+        Media lyd = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(lyd);
+        mediaPlayer.seek(mediaPlayer.getStartTime());
+        mediaPlayer.play();
 
     }
 

@@ -32,9 +32,6 @@ public class KrydsOgBolleController {
     @FXML
     private GridPane gridPane;
 
-    @FXML
-    private Label infoBox;
-
     //Styrer hvor spilleren placerer sin brik og placerer den, og holder øje med hvem der vinder.
     @FXML
     void trykKnap(ActionEvent event) throws IOException {
@@ -96,12 +93,13 @@ public class KrydsOgBolleController {
                 knap.setText("");
             }
         }
-        catch (NullPointerException e) {
+        catch (NullPointerException e) { //
             System.out.println(e);
         }
 
     }
 
+    //Laver selve spil skærmen.
     public void visSpilSkærm(ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("KrydsOgBolle.fxml"));
@@ -111,6 +109,7 @@ public class KrydsOgBolleController {
 
     }
 
+    //Laver opgiv skærmen.
     public void visOpgivSkærm(ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("KrydsOgBolleOpgiv.fxml"));
@@ -120,6 +119,7 @@ public class KrydsOgBolleController {
 
     }
 
+    //Laver skærmen for når spiller X vinder.
     public void visVinderXSkærm(ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("KrydsOgBolleVinderX.fxml"));
@@ -129,6 +129,7 @@ public class KrydsOgBolleController {
 
     }
 
+    //Laver skærmen for når spiller O vinder.
     public void visVinderOSkærm(ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("KrydsOgBolleVinderO.fxml"));

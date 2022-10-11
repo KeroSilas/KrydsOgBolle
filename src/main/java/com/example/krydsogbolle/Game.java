@@ -12,7 +12,7 @@ public class Game {
         board.fåFelter()[row][col].retSquare(spiller);
         spilTurTæller++;
 
-        System.out.println(row + " / " + col);
+        System.out.println(row + ", " + col);
         System.out.println(spiller);
 
     }

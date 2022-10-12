@@ -91,9 +91,9 @@
       </GridPane>
    </center>
    <top>
-      <Label fx:id="test" prefHeight="50.0" text="KRYDS OG BOLLE" BorderPane.alignment="CENTER">
+      <Label fx:id="spillerId" prefHeight="50.0" text="Spiller X" BorderPane.alignment="CENTER">
          <font>
-            <Font name="Arial Black" size="14.0" />
+            <Font name="Arial Black" size="20.0" />
          </font>
       </Label>
    </top>

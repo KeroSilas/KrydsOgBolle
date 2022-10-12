@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,8 @@ import javafx.scene.media.Media;
 
 public class KrydsOgBolleController {
 
+    private int flytBrikTæller = 0;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -22,7 +25,7 @@ public class KrydsOgBolleController {
     private Game game;
 
     @FXML
-    private GridPane gridPane;
+    private Label spillerId;
 
     //Styrer hvor spilleren placerer sin brik og placerer den, og holder øje med hvem der vinder.
     @FXML
@@ -32,16 +35,32 @@ public class KrydsOgBolleController {
         int row = (GridPane.getRowIndex(knap) == null) ? 0 : GridPane.getRowIndex(knap); //Laver et row variabel med knappens row index i GridPane containeren.
         int col = (GridPane.getColumnIndex(knap) == null) ? 0 : GridPane.getColumnIndex(knap); //Laver et column variabel med knappens row index i GridPane containeren.
 
+        System.out.println("Koordinat: " + row + ", " + col);
+        System.out.println("Spiller: " + game.fåSpiller());
+
         //Checker om feltet spilleren har valgt er blank og om der er blevet placeret mindre end 6 brikker.
-        if (game.fåBoard().fåFelter()[row][col].fåSquare().isBlank() && game.fåSpilTurTæller()<6) {
+        if (game.fåBoard().fåFelter()[row][col].fåSquare().isBlank() && game.fåSpilTurTæller() < 6) {
             game.spilTur(row, col); //Bruger knappens xy koordinater til at sætte spillerens tur ind i et 2D array af spillebrættet.
             knap.setText(game.fåSpiller());
             game.næsteSpiller(); //Skifter til den anden spiller (sætter næste tur til O fra X eller omvendt).
         }
         //Hvis 6 brikker er placeret på spillebrættet, så bruges metoden flytBrik() i stedet.
-        else {
-            game.flytBrik(row, col);
+        else if (game.fåSpilTurTæller() == 6){
+
+            if (flytBrikTæller == 0 && game.fåBoard().fåFelter()[row][col].fåSquare().equals(game.fåSpiller())) {
+                game.fåBoard().fåFelter()[row][col].retSquare("");
+                knap.setText("");
+                flytBrikTæller++;
+            }
+            else if (flytBrikTæller == 1 && game.fåBoard().fåFelter()[row][col].fåSquare().isBlank()) {
+                game.fåBoard().fåFelter()[row][col].retSquare(game.fåSpiller());
+                knap.setText(game.fåSpiller());
+                flytBrikTæller = 0;
+                game.næsteSpiller();
+            }
         }
+
+        spillerId.setText("Spiller " + game.fåSpiller());
 
         //Hvis en spiller har vundet, så vis en vinder skærm.
         if (game.fåVinder().equals("X")) {
@@ -79,7 +98,7 @@ public class KrydsOgBolleController {
     Fjerner alt tekst fra spilleknapperne.
     Er i øjeblikket ikke nødvendigt, da når en ny spil skærm bliver loadet, så bliver der dannet nye knapper.
     */
-    public void resetKnapper() {
+    /*public void resetKnapper() {
 
         try {
             for (Node n : gridPane.getChildren()) { //Kigger alle noder igennem der ligger i GridPane og sletter deres text.
@@ -91,7 +110,7 @@ public class KrydsOgBolleController {
             System.out.println(e);
         }
 
-    }
+    }*/
 
     //Laver selve spil skærmen.
     public void visSpilSkærm(ActionEvent event) throws IOException {

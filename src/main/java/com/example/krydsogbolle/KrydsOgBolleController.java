@@ -36,9 +36,6 @@ public class KrydsOgBolleController {
         int row = (GridPane.getRowIndex(knap) == null) ? 0 : GridPane.getRowIndex(knap); //Laver et row variabel med knappens row index i GridPane containeren.
         int col = (GridPane.getColumnIndex(knap) == null) ? 0 : GridPane.getColumnIndex(knap); //Laver et column variabel med knappens row index i GridPane containeren.
 
-        //System.out.println("Koordinat: " + row + ", " + col);
-        //System.out.println("Spiller: " + game.fåSpiller());
-
         //Checker om feltet spilleren har valgt er blank og om der er blevet placeret mindre end 6 brikker.
         if (game.fåBoard().fåFelter()[row][col].fåSquare().isBlank() && game.fåSpilTurTæller() < 6) {
             game.spilTur(row, col); //Bruger knappens xy koordinater til at sætte spillerens tur ind i et 2D array af spillebrættet.
@@ -75,45 +72,35 @@ public class KrydsOgBolleController {
         else if (game.fåVinder().equals("O")) {
             visVinderOSkærm(event);
         }
-
     }
 
     @FXML
     void trykNytSpil(ActionEvent event) throws IOException {
-
         visSpilSkærm(event);
         game.nytSpil();
         flytBrikTæller = 0;
-
     }
 
     @FXML
     void trykOpgiv(ActionEvent event) throws IOException {
-
         visOpgivSkærm(event);
-
     }
 
     public void initialize() {
-
         game = new Game();
         game.nytSpil();
-
     }
 
     //Laver selve spil skærmen.
     public void visSpilSkærm(ActionEvent event) throws IOException {
-
         root = FXMLLoader.load(getClass().getResource("KrydsOgBolle.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-
     }
 
     //Laver opgiv skærmen.
     public void visOpgivSkærm(ActionEvent event) throws IOException {
-
         root = FXMLLoader.load(getClass().getResource("KrydsOgBolleOpgiv.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -124,12 +111,10 @@ public class KrydsOgBolleController {
         MediaPlayer mediaPlayer = new MediaPlayer(lyd);
         mediaPlayer.seek(mediaPlayer.getStartTime());
         mediaPlayer.play();
-
     }
 
     //Laver skærmen for når spiller X vinder.
     public void visVinderXSkærm(ActionEvent event) throws IOException {
-
         root = FXMLLoader.load(getClass().getResource("KrydsOgBolleVinderX.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -140,12 +125,10 @@ public class KrydsOgBolleController {
         MediaPlayer mediaPlayer = new MediaPlayer(lyd);
         mediaPlayer.seek(mediaPlayer.getStartTime());
         mediaPlayer.play();
-
     }
 
     //Laver skærmen for når spiller O vinder.
     public void visVinderOSkærm(ActionEvent event) throws IOException {
-
         root = FXMLLoader.load(getClass().getResource("KrydsOgBolleVinderO.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -156,7 +139,5 @@ public class KrydsOgBolleController {
         MediaPlayer mediaPlayer = new MediaPlayer(lyd);
         mediaPlayer.seek(mediaPlayer.getStartTime());
         mediaPlayer.play();
-
     }
-
 }

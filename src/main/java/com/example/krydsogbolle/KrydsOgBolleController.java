@@ -16,6 +16,7 @@ import javafx.scene.media.Media;
 
 public class KrydsOgBolleController {
 
+    //En tæller som kun bliver brugt når det er tid til at rykke på brikkerne.
     private int flytBrikTæller = 0;
 
     private Stage stage;
@@ -35,8 +36,8 @@ public class KrydsOgBolleController {
         int row = (GridPane.getRowIndex(knap) == null) ? 0 : GridPane.getRowIndex(knap); //Laver et row variabel med knappens row index i GridPane containeren.
         int col = (GridPane.getColumnIndex(knap) == null) ? 0 : GridPane.getColumnIndex(knap); //Laver et column variabel med knappens row index i GridPane containeren.
 
-        System.out.println("Koordinat: " + row + ", " + col);
-        System.out.println("Spiller: " + game.fåSpiller());
+        //System.out.println("Koordinat: " + row + ", " + col);
+        //System.out.println("Spiller: " + game.fåSpiller());
 
         //Checker om feltet spilleren har valgt er blank og om der er blevet placeret mindre end 6 brikker.
         if (game.fåBoard().fåFelter()[row][col].fåSquare().isBlank() && game.fåSpilTurTæller() < 6) {
@@ -44,14 +45,18 @@ public class KrydsOgBolleController {
             knap.setText(game.fåSpiller());
             game.næsteSpiller(); //Skifter til den anden spiller (sætter næste tur til O fra X eller omvendt).
         }
-        //Hvis 6 brikker er placeret på spillebrættet, så bruges metoden flytBrik() i stedet.
+        //Hvis 6 brikker er placeret på spillebrættet, så flytter vi på brikkerne i stedet.
         else if (game.fåSpilTurTæller() == 6){
 
+            //Checker om tælleren er 0 og om det felt man trykker på tilhører spillerens tur.
+            //Hvis begge krav er opfyldt, så vil man slette det felt man har trykket på.
             if (flytBrikTæller == 0 && game.fåBoard().fåFelter()[row][col].fåSquare().equals(game.fåSpiller())) {
                 game.fåBoard().fåFelter()[row][col].retSquare("");
                 knap.setText("");
                 flytBrikTæller++;
             }
+            //Checker om tælleren er 1 og om det felt man trykker på er blankt.
+            //Hvis begge krav er opfyldt, så vil man sætte sin brik ind og nulstille tælleren og gå til næste spillers tur.
             else if (flytBrikTæller == 1 && game.fåBoard().fåFelter()[row][col].fåSquare().isBlank()) {
                 game.fåBoard().fåFelter()[row][col].retSquare(game.fåSpiller());
                 knap.setText(game.fåSpiller());
@@ -60,6 +65,7 @@ public class KrydsOgBolleController {
             }
         }
 
+        //Viser hvilkens tur det er.
         spillerId.setText("Spiller " + game.fåSpiller());
 
         //Hvis en spiller har vundet, så vis en vinder skærm.
@@ -131,7 +137,7 @@ public class KrydsOgBolleController {
         stage.setScene(scene);
 
         //Spiller en lyd.
-        Media lyd = new Media(String.valueOf(getClass().getResource("/sounds/TaberLyd.mp3")));
+        Media lyd = new Media(String.valueOf(getClass().getResource("/sounds/TaberLyd.wav")));
         MediaPlayer mediaPlayer = new MediaPlayer(lyd);
         mediaPlayer.seek(mediaPlayer.getStartTime());
         mediaPlayer.play();

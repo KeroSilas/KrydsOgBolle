@@ -101,24 +101,6 @@ public class KrydsOgBolleController {
 
     }
 
-    /*
-    Fjerner alt tekst fra spilleknapperne.
-    Er i øjeblikket ikke nødvendigt, da når en ny spil skærm bliver loadet, så bliver der dannet nye knapper.
-    */
-    /*public void resetKnapper() {
-
-        try {
-            for (Node n : gridPane.getChildren()) { //Kigger alle noder igennem der ligger i GridPane og sletter deres text.
-                Button knap = (Button) n;
-                knap.setText("");
-            }
-        }
-        catch (NullPointerException e) {
-            System.out.println(e);
-        }
-
-    }*/
-
     //Laver selve spil skærmen.
     public void visSpilSkærm(ActionEvent event) throws IOException {
 

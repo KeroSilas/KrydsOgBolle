@@ -5,19 +5,12 @@ public class Game {
     private String spiller;
     private Board board;
     private int spilTurTæller; //Tæller antal ture der er blevet spillet i alt.
-    private int flytBrikTæller;
 
     //Sætter X eller O ind, alt efter hvem der er den næste spiller. Placeringen af spillerens input bliver sendt fra controlleren.
     public void spilTur(int row, int col) {
 
         board.fåFelter()[row][col].retSquare(spiller);
         spilTurTæller++;
-
-    }
-
-    //Flytter brikken ...
-    public void flytBrik(int row, int col) {
-
 
     }
 
@@ -107,24 +100,12 @@ public class Game {
 
     }
 
-    //Giver true hvis en vinder er fundet.
-    public boolean slutSpil() {
-
-        if (!fåVinder().equals("")) {
-            return true;
-        }
-
-        return false;
-
-    }
-
     //Starter et nyt spil og nulstiller næste spillers tur til at være X.
     public void nytSpil() {
 
         board = new Board();
         spiller = "X";
         spilTurTæller = 0;
-        flytBrikTæller = 0;
 
     }
 
@@ -132,13 +113,6 @@ public class Game {
     public String fåSpiller() {
 
         return spiller;
-
-    }
-
-    //Bliver ikke brugt lige nu. Kan bruges til en funktion hvor spilleren vælger om X eller O starter.
-    public void retSpiller(String spiller) {
-
-        this.spiller = spiller;
 
     }
 
@@ -152,12 +126,6 @@ public class Game {
     public int fåSpilTurTæller() {
 
         return spilTurTæller;
-
-    }
-
-    public int fåFlytBrikTæller() {
-
-        return flytBrikTæller;
 
     }
 

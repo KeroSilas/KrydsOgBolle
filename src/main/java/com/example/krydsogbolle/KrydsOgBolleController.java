@@ -17,7 +17,7 @@ import javafx.scene.media.Media;
 public class KrydsOgBolleController {
 
     //En tæller som kun bliver brugt når det er tid til at rykke på brikkerne.
-    private int flytBrikTæller = 0;
+    private int flytBrikTæller;
 
     private Stage stage;
     private Scene scene;
@@ -83,6 +83,7 @@ public class KrydsOgBolleController {
 
         visSpilSkærm(event);
         game.nytSpil();
+        flytBrikTæller = 0;
 
     }
 
